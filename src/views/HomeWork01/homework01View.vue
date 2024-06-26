@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, type Component, computed, defineAsyncComponent, watch } from 'vue'
+import { ref, type Component, computed, defineAsyncComponent } from 'vue'
 const nowChooseR = ref(0)
 const ChooseR: { name: string; component: Component }[] = [
   {
