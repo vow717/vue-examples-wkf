@@ -52,6 +52,11 @@ import { RouterLink, RouterView } from 'vue-router'
     <hr />
     <h1>实验</h1>
     <h3><router-link to="/experiment02/01">实验二</router-link></h3>
+
+    <hr />
+    <h1>作业</h1>
+    <h3><router-link to="/homework01/01">作业一</router-link></h3>
+    <h3><router-link to="/homework02/01">作业二</router-link></h3>
   </div>
 </template>
 

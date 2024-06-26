@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 interface Course {
   name: string
@@ -8,8 +8,8 @@ interface Course {
 }
 
 const scoreEnough = 13
-const scoreNow = ref<number>(0)
-const courses = ref<Course[]>([
+const scoreNowR = ref<number>(0)
+const coursesR = ref<Course[]>([
   { name: 'Web前端开发技术', score: 2, classTime: 4 },
   { name: 'Java程序设计', score: 2.5, classTime: 4 },
   { name: 'XML与WebService技术', score: 2, classTime: 5 },
@@ -23,45 +23,40 @@ const courses = ref<Course[]>([
   { name: 'Python', score: 2.5, classTime: 6 }
 ])
 
-const selectCourses = ref<Course[]>([])
-const toggleCourse = (course: Course) => {
-  const index = selectCourses.value.findIndex((c) => c.name === course.name)
-  if (index > -1) {
-    selectCourses.value.splice(index, 1)
-    scoreNow.value -= course.score
-  } else {
-    selectCourses.value.push(course)
-    scoreNow.value += course.score
-  }
-  selectCourses.value.sort((a, b) => a.classTime - b.classTime)
-  // 排序逻辑被封装在数据处理阶段，视图层只负责展示排序后的结果
-}
+const selectCoursesR = ref<Course[]>([])
+watch(selectCoursesR, () => {
+  scoreNowR.value = 0
+  selectCoursesR.value.forEach((c) => {
+    scoreNowR.value += c.score
+  })
+  selectCoursesR.value.sort((a, b) => a.classTime - b.classTime)
+})
 </script>
 <template>
   <div style="display: flex; align-items: flex-start">
     <div style="flex-direction: column">
       <div style="border: 1px solid black">
         <h3>可选课程</h3>
-        <template v-for="(c, index) of courses" :key="index">
-          <input type="checkbox" @change="toggleCourse(c)" />
+        <template v-for="(c, index) of coursesR" :key="index">
+          <input type="checkbox" v-model="selectCoursesR" :value="c" />
           {{ c.name }} - {{ c.score }} ({{ c.classTime }})
           <br />
         </template>
       </div>
-      <p :class="{ notEnough: scoreNow < scoreEnough, enough: scoreNow >= scoreEnough }">
-        {{ scoreNow }}/{{ scoreEnough }}
+      <p :class="{ notEnough: scoreNowR < scoreEnough, enough: scoreNowR >= scoreEnough }">
+        {{ scoreNowR }}/{{ scoreEnough }}
       </p>
     </div>
     <div style="border: 1px solid black">
       <h3>已选课程</h3>
-      <template v-for="(sc, index) of selectCourses" :key="index">
+      <template v-for="(sc, index) of selectCoursesR" :key="index">
         {{ sc.name }} - {{ sc.score }} ({{ sc.classTime }})
         <br />
       </template>
     </div>
   </div>
   <div>
-    <button type="button" v-if="scoreNow >= scoreEnough">提交</button>
+    <button type="button" v-if="scoreNowR >= scoreEnough">提交</button>
   </div>
 </template>
 <style>
@@ -72,3 +67,4 @@ const toggleCourse = (course: Course) => {
   color: rgb(49, 228, 49);
 }
 </style>
+<!-- 如果有一个 <input type="checkbox" v-model="selectedValues">，其中 selectedValues 是一个 ref 数组，那么当用户勾选这个复选框时，该复选框的 value 值会被加入到 selectedValues 数组中。-->
