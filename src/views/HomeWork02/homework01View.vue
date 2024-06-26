@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 const daysR = ref<number[]>([])
 const weekendsR = ref(false)
 const weekdaysR = ref(false)
@@ -21,14 +21,12 @@ const updateDaysR = (type: string) => {
       daysR.value = daysR.value.filter((day) => day < 6)
     }
   }
+  daysR.value.sort((a, b) => a - b)
 }
 const updateWeekR = () => {
   weekdaysR.value = [1, 2, 3, 4, 5].every((day) => daysR.value.includes(day))
   weekendsR.value = [6, 7].every((day) => daysR.value.includes(day))
 }
-watch(daysR, () => {
-  daysR.value.sort((a, b) => a - b)
-})
 </script>
 <template>
   <div>
