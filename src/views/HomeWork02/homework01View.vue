@@ -1,23 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const daysR = ref([false, false, false, false, false, false, false])
+import { ref, watch } from 'vue'
+const daysR = ref<number[]>([])
 const weekendsR = ref(false)
 const weekdaysR = ref(false)
 const updateDaysR = (type: string) => {
   if (type === 'work') {
-    for (let i = 0; i < 5; i++) {
-      daysR.value[i] = weekdaysR.value
+    if (weekdaysR.value) {
+      for (let i = 1; i <= 5; i++) {
+        daysR.value.push(i)
+      }
+    } else {
+      daysR.value = daysR.value.filter((day) => day > 5)
     }
   } else {
-    for (let i = 5; i < 7; i++) {
-      daysR.value[i] = weekendsR.value
+    if (weekendsR.value) {
+      for (let i = 6; i <= 7; i++) {
+        daysR.value.push(i)
+      }
+    } else {
+      daysR.value = daysR.value.filter((day) => day < 6)
     }
   }
 }
 const updateWeekR = () => {
-  weekdaysR.value = daysR.value.slice(0, 5).every((day) => day)
-  weekendsR.value = daysR.value.slice(5, 7).every((day) => day)
+  weekdaysR.value = [1, 2, 3, 4, 5].every((day) => daysR.value.includes(day))
+  weekendsR.value = [6, 7].every((day) => daysR.value.includes(day))
 }
+watch(daysR, () => {
+  daysR.value.sort((a, b) => a - b)
+})
 </script>
 <template>
   <div>
@@ -33,10 +44,11 @@ const updateWeekR = () => {
     </label>
   </div>
   <div>
-    <label v-for="(v, index) of daysR" :key="index">
+    <label v-for="index in 7" :key="index">
       |
-      <input type="checkbox" v-model="daysR[index]" @change="updateWeekR()" />
-      周{{ index + 1 }}
+      <input type="checkbox" v-model="daysR" @change="updateWeekR()" :value="index" />
+      周{{ index }}
     </label>
   </div>
+  <p>选择情况:{{ daysR }}</p>
 </template>
