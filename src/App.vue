@@ -14,7 +14,7 @@ div {
 }
 #app {
   display: flex;
-  height: 1000px;
+  height: auto;
   max-width: 1200px;
   margin: 5px auto;
 }

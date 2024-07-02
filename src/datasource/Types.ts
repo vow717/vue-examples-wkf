@@ -11,6 +11,7 @@ export interface User {
   sex?: string
   title?: Title
   courses?: Course[]
+  level?: number
 }
 export interface Title {
   id?: number

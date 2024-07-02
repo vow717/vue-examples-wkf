@@ -30,8 +30,48 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Example04/example01View.vue')
   },
   {
+    path: '/example05/01',
+    component: () => import('@/views/Example05/example01View.vue')
+  },
+  {
+    path: '/example05/02',
+    component: () => import('@/views/Example05/example02View.vue')
+  },
+  {
+    path: '/example06/01',
+    component: () => import('@/views/Example06/example01View.vue')
+  },
+  {
+    path: '/example06/02',
+    component: () => import('@/views/Example06/example02View.vue')
+  },
+  {
+    path: '/example06/03',
+    component: () => import('@/views/Example06/example03View.vue')
+  },
+  {
     path: '/experiment02/01',
     component: () => import('@/views/Experiment02/experiment01View.vue')
+  },
+  {
+    path: '/experiment03/home',
+    component: () => import('@/views/Experiment03/homeView.vue')
+  },
+  {
+    path: '/experiment03/food',
+    component: () => import('@/views/Experiment03/foodView.vue')
+  },
+  {
+    path: '/experiment03/shop/:sname',
+    component: () => import('@/views/Experiment03/shopView.vue')
+  },
+  {
+    path: '/experiment03/location',
+    component: () => import('@/views/Experiment03/locationView.vue')
+  },
+  {
+    path: '/experiment03/order',
+    component: () => import('@/views/Experiment03/orderView.vue')
   },
   {
     path: '/homework01/01',
