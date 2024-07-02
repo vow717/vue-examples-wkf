@@ -69,6 +69,9 @@ import { RouterLink, RouterView } from 'vue-router'
       <li>
         <router-link to="/example06/03">WayTwo</router-link>
       </li>
+      <li>
+        <router-link to="/example06/04">WayThree</router-link>
+      </li>
     </ul>
     <hr />
     <h1>实验</h1>
