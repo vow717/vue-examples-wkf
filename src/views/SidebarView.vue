@@ -73,6 +73,12 @@ import { RouterLink, RouterView } from 'vue-router'
         <router-link to="/example06/04">WayThree</router-link>
       </li>
     </ul>
+    <h2>Functional Component</h2>
+    <ul>
+      <li>
+        <router-link to="/example07/01">Del</router-link>
+      </li>
+    </ul>
     <hr />
     <h1>实验</h1>
     <h3><router-link to="/experiment02/01">实验二</router-link></h3>

@@ -53,5 +53,8 @@ const editCourse = (c: Course) => {
       :course="courseEditR"
       @emitClose="activeR = false"
       @emitSubmit="onEmitSubmit" />
+    <!-- 这里的 @emitClose 表示监听 Editbutton 组件触发的 emitClose 事件。
+       当 emitClose 事件被触发时，将 activeR 设置为 false。
+       @emitSubmit同理-->
   </div>
 </template>
