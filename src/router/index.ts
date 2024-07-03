@@ -98,6 +98,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/HomeWork02/homework01View.vue')
   },
   {
+    path: '/task01/01',
+    component: () => import('@/views/SmallTask01/smalltask01View.vue')
+  },
+
+  {
     path: '/',
     component: () => import('@/views/HelloWorld.vue')
   }
