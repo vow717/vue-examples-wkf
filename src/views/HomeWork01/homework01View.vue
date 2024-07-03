@@ -24,10 +24,10 @@ function getColor(index: number): string {
 <template>
   <p>
     <span
-      :style="{ margin: '5px', cursor: 'pointer', color: getColor(index) }"
-      @click="nowChooseR = index"
       v-for="(c, index) of ChooseR"
-      :key="index">
+      :key="index"
+      :style="{ margin: '5px', cursor: 'pointer', color: getColor(index) }"
+      @click="nowChooseR = index">
       {{ c.name }}
     </span>
   </p>
