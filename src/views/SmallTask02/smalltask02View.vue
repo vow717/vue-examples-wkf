@@ -2,7 +2,11 @@
   <div>
     <button @click="loadCourses">加载课程</button>
     <ul v-if="activeR && coursesS.length > 0">
-      <li v-for="course in coursesS" :key="course.id">{{ course.name }}</li>
+      <li v-for="course in coursesS" :key="course.id">
+        {{ course.name }}
+        <br />
+        {{ course.createTime }}
+      </li>
     </ul>
   </div>
 </template>
@@ -16,9 +20,7 @@ const { coursesS } = usesmalltask01Store()
 const activeR = ref(false)
 //async用来定义一个异步函数。它使得函数内部可以使用 await 关键字。
 const loadCourses = async () => {
-  if (coursesS.value.length === 0) {
-    await listCoursesService()
-  }
+  await listCoursesService()
   activeR.value = true
 }
 </script>
