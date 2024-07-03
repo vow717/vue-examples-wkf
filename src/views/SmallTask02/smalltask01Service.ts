@@ -11,9 +11,10 @@ const courses: Course[] = [
 export const listCoursesService = async (): Promise<Course[]> => {
   return new Promise<Course[]>((resolve) => {
     setTimeout(() => {
-      // // 异步操作完成后，调用 resolve() 表示 Promise 成功
+      //改变store全局响应式的数据
+      //异步操作完成后，调用 resolve(courses)表示 Promise 成功，并传递数据对象作为 Promise 的结果。
       usesmalltask01Store().coursesS.value = courses
       resolve(courses)
-    }, 1000)
+    }, 2000)
   })
 }

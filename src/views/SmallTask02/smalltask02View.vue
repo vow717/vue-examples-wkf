@@ -1,16 +1,24 @@
 <template>
   <div>
-    <ul>
-      <li v-for="course in courses" :key="course.id">{{ course.name }}</li>
+    <button @click="loadCourses">加载课程</button>
+    <ul v-if="activeR && coursesS.length > 0">
+      <li v-for="course in coursesS" :key="course.id">{{ course.name }}</li>
     </ul>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { defineProps } from 'vue'
-import type { Course } from '@/datasource/Types'
+<script setup lang="ts">
+import { ref } from 'vue'
+import { listCoursesService } from './smalltask01Service'
+import { usesmalltask01Store } from './smalltask01Store'
 
-const props = defineProps<{
-  courses: Course[]
-}>()
+const { coursesS } = usesmalltask01Store()
+const activeR = ref(false)
+//async用来定义一个异步函数。它使得函数内部可以使用 await 关键字。
+const loadCourses = async () => {
+  if (coursesS.value.length === 0) {
+    await listCoursesService()
+  }
+  activeR.value = true
+}
 </script>
