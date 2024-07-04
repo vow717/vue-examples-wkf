@@ -16,7 +16,7 @@ const addCourseF = async () => {
   courseName.value = ''
 
   //更新一下课程列表
-  await listCoursesService()
+  //await listCoursesService()
 }
 </script>
 <template>
