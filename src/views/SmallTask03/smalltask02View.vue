@@ -2,7 +2,7 @@
   <div>
     <button @click="loadCourses">加载课程</button>
     <ul v-if="activeR && coursesS.length > 0">
-      <li v-for="(course, index) of coursesS" :key="index">
+      <li v-for="course in coursesS" :key="course.id">
         {{ course.name }}
         <br />
         {{ course.createTime }}
