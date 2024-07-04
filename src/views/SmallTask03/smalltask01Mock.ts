@@ -14,3 +14,12 @@ export const listCoursesMock = async (): Promise<Course[]> => {
     }, 1000)
   })
 }
+
+export const addCourseMock = async (newCourse: Course): Promise<Course[]> => {
+  return new Promise<Course[]>((resolve) => {
+    setTimeout(() => {
+      courses.push(newCourse)
+      resolve(courses)
+    }, 1000)
+  })
+}

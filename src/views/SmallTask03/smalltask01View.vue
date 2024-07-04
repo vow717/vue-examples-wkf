@@ -1,17 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import ChildComponent from './smalltask02View.vue'
-
-const componentsToShow = ref(false)
-
-const addComponent = () => {
-  componentsToShow.value = true
-}
+import AddCourseComponent from './smalltask04View.vue'
+import CourseListComponent from './smalltask02View.vue'
 </script>
 <template>
   <div>
-    <button @click="addComponent">加载课程组件</button>
+    <AddCourseComponent />
     <hr />
-    <ChildComponent v-if="componentsToShow" />
+    <CourseListComponent />
   </div>
 </template>
