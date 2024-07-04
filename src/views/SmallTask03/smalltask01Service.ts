@@ -18,7 +18,7 @@ export const listCoursesService = async (): Promise<Course[]> => {
 export const addCourseService = async (newCourse: Course): Promise<Course[]> => {
   const { coursesS } = usesmalltask01Store()
   const updateCourses = await addCourseMock(newCourse)
-  coursesS.value = [...updateCourses] //******//
+  coursesS.value = [...updateCourses] //[...]才行,状态管理混乱的结果
   console.log('addCourseService - 更新后的 coursesS:', coursesS.value)
   return updateCourses
 }
