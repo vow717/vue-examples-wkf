@@ -15,7 +15,8 @@ const fetchCourses = async (): Promise<Course[]> => {
 }
 
 const addCourse = async (newCourse: Course): Promise<Course[]> => {
-  coursesS.value = [...(await addCourseMock(newCourse))]
+  coursesS.value = await addCourseMock(newCourse)
+  console.log('addCourse - 更新后的 coursesS:', coursesS.value)
   return coursesS.value
 }
 

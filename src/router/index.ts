@@ -113,6 +113,10 @@ const routes: RouteRecordRaw[] = [
     path: '/task04/01',
     component: () => import('@/views/SmallTask04/smalltask01View.vue')
   },
+  {
+    path: '/task05/01',
+    component: () => import('@/views/SmallTask05/smalltask01View.vue')
+  },
 
   {
     path: '/',
