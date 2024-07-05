@@ -1,25 +1,40 @@
 <script setup lang="ts">
 import { ref, watch, type Ref } from 'vue'
 import { usesmalltask01Store } from './smalltask01Store'
-import type { Teacher } from './smalltask01Mock'
-const { fetchTeachersByDepartment } = usesmalltask01Store()
+import { type Department, type Teacher } from './smalltask01Mock'
+const { fetchDepartments, fetchTeachersByDepartment } = usesmalltask01Store()
 
 const loading = ref<boolean>(false)
-const props = defineProps<{ departmentId: string }>()
-const selectedTeacher = ref<Teacher>({})
+
+const departmentsR = ref<Department[]>([])
+const departmentId = ref<string>('')
 const teachersR = ref<Teacher[]>([])
+const selectedTeacher = ref<Teacher>({})
+
 defineExpose<{ teacher: Ref<Teacher> }>({ teacher: selectedTeacher })
+
+const loadingDepartments = async () => {
+  departmentsR.value = await fetchDepartments()
+  loading.value = false
+}
+loadingDepartments()
+
 watch(
-  () => props.departmentId,
+  () => departmentId.value,
   async () => {
     loading.value = true
     selectedTeacher.value = {}
-    teachersR.value = props.departmentId ? await fetchTeachersByDepartment(props.departmentId) : []
+    teachersR.value = await fetchTeachersByDepartment(departmentId.value)
     loading.value = false
   }
 )
 </script>
 <template>
+  <h3>选择专业:</h3>
+  <select v-model="departmentId">
+    <option value=""></option>
+    <option v-for="(d, index) of departmentsR" :key="index" :value="d.id">{{ d.name }}</option>
+  </select>
   <div v-if="departmentId">
     <h3>选择教师</h3>
     <div v-if="loading">
