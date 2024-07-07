@@ -9,17 +9,11 @@ const createModalDialog = (course: Course) => {
   render(vnode, document.body)
 }
 
-const createModalDialog2 = async (): Promise<void> => {
+const createModalDialog2 = async () => {
   const ModalDialog2 = defineAsyncComponent(() => import('./ModalComponent2.vue'))
   const vnode = h(ModalDialog2)
-  render(vnode, document.body)
 
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      render(null, document.body)
-      resolve()
-    }, 2000)
-  })
+  render(vnode, document.body)
 }
 
 export { createModalDialog, createModalDialog2 }

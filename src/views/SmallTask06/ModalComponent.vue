@@ -9,9 +9,18 @@ const close = () => {
   //这个操作会将之前通过 render 渲染到 document.body 中的内容（通常是一个组件或 HTML 元素）移除掉。
   render(null, document.body)
 }
+
 const confirm = async () => {
-  await createModalDialog2()
-  close()
+  return new Promise<void>((resolve) => {
+    // 创建并显示 ModalDialog2
+    createModalDialog2()
+
+    // 在 2 秒后移除 ModalDialog2 并关闭当前的 ModalDialog
+    setTimeout(() => {
+      close()
+      resolve()
+    }, 2000)
+  })
 }
 </script>
 <template>
