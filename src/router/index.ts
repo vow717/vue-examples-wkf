@@ -71,23 +71,29 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/experiment03/home',
-    component: () => import('@/views/Experiment03/homeView.vue')
-  },
-  {
-    path: '/experiment03/food',
-    component: () => import('@/views/Experiment03/foodView.vue')
-  },
-  {
-    path: '/experiment03/shop/:sname',
-    component: () => import('@/views/Experiment03/shopView.vue')
-  },
-  {
-    path: '/experiment03/location',
-    component: () => import('@/views/Experiment03/locationView.vue')
-  },
-  {
-    path: '/experiment03/order',
-    component: () => import('@/views/Experiment03/orderView.vue')
+    component: () => import('@/views/Experiment03/homeView.vue'),
+    children: [
+      {
+        path: 'food',
+        component: () => import('@/views/Experiment03/foodView.vue')
+      },
+      {
+        path: 'shop/:id',
+        component: () => import('@/views/Experiment03/shopView.vue')
+      },
+      {
+        path: 'location',
+        component: () => import('@/views/Experiment03/locationView.vue')
+      },
+      {
+        path: 'order',
+        component: () => import('@/views/Experiment03/orderView.vue')
+      },
+      {
+        path: 'running',
+        component: () => import('@/views/Experiment03/runningView.vue')
+      }
+    ]
   },
   {
     path: '/homework01/01',

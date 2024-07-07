@@ -30,15 +30,18 @@ const lookTeachersF = () => {
       </tr>
     </table>
   </div>
+
   <div>
     <button @click="lookTeachersF">点击查看教师</button>
-    <suspense v-if="lookTeachersR">
-      <template #default>
-        <teachersView />
-      </template>
-      <template #fallback>
-        <loadingView />
-      </template>
-    </suspense>
+    <div v-if="lookTeachersR">
+      <suspense>
+        <template #default>
+          <teachersView />
+        </template>
+        <template #fallback>
+          <loadingView />
+        </template>
+      </suspense>
+    </div>
   </div>
 </template>

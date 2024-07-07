@@ -6,7 +6,13 @@ export interface Eating {
 }
 
 export interface Shop {
+  id?: string
   name?: string
   Eatings?: Eating[]
   score?: number
+}
+
+export interface Order {
+  item: Eating
+  quantity: number
 }

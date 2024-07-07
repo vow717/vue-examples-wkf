@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import coursesView from './coursesView.vue'
 import loadingView from './loadingView.vue'
-import teachersView from './teachersView.vue'
 
 const lookCoursesR = ref(false)
 const lookCoursesF = () => {

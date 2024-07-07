@@ -1,22 +1,36 @@
 <script setup lang="ts">
-import { useExample05Store } from './experiment03Store'
-import { RouterLink, RouterView } from 'vue-router'
+import type { Shop } from './food/foodInf'
+import { useService } from './experiment03Service'
+import { RouterLink } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import LoadingView from './E3Component/loadingView.vue'
 
-const store = useExample05Store()
-const shops = store.listShops
+const { fetchShopsService } = useService()
+const isLoading = ref(true)
+const shops = ref<Shop[]>([])
+
+const loading = async () => {
+  shops.value = await fetchShopsService()
+  isLoading.value = false
+}
+onMounted(loading)
 </script>
 <template>
   <div>
     <p>美食列表:</p>
-    <div v-for="(shop, index) in shops" :key="index">
-      <router-link :to="`/experiment03/shop/${shop.name}`">
-        <div class="card">
-          <h2>{{ shop.name }}</h2>
-          评分:{{ shop.score }}
-        </div>
-      </router-link>
+    <div v-if="!isLoading">
+      <div v-for="(shop, index) in shops" :key="index">
+        <router-link :to="`/experiment03/home/shop/${shop.id}`">
+          <div class="card">
+            <h2>{{ shop.name }}</h2>
+            评分:{{ shop.score }}
+          </div>
+        </router-link>
+      </div>
     </div>
-    <router-view />
+    <div v-if="isLoading">
+      <LoadingView />
+    </div>
   </div>
 </template>
 <style>
