@@ -96,6 +96,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <h1>作业</h1>
     <h3><router-link to="/homework01/01">作业一</router-link></h3>
     <h3><router-link to="/homework02/01">作业二</router-link></h3>
+    <h3><router-link to="/homework05/01">作业五</router-link></h3>
     <h1>小练习</h1>
     <h3><router-link to="/task01/01">练习1</router-link></h3>
     <h3><router-link to="/task02/01">练习2</router-link></h3>
@@ -103,6 +104,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <h3><router-link to="/task04/01">练习4</router-link></h3>
     <h3><router-link to="/task05/01">练习5</router-link></h3>
     <h3><router-link to="/task06/01">练习6</router-link></h3>
+    <h3><router-link to="/task07/01">练习7</router-link></h3>
   </div>
 </template>
 

@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import coursesView from './coursesView.vue'
+import loadingView from './loadingView.vue'
+
+const lookR = ref(false)
+const lookCoursesF = () => {
+  lookR.value = true
+}
+</script>
+<template>
+  <div>
+    <button @click="lookCoursesF()">点击查看课程</button>
+    <suspense v-if="lookR">
+      <template #default>
+        <coursesView />
+      </template>
+      <template #fallback>
+        <loadingView />
+      </template>
+    </suspense>
+  </div>
+</template>

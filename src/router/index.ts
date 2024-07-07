@@ -98,6 +98,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/HomeWork02/homework01View.vue')
   },
   {
+    path: '/homework05/01',
+    component: () => import('@/views/HomeWork05/homework01View.vue')
+  },
+  {
     path: '/task01/01',
     component: () => import('@/views/SmallTask01/smalltask01View.vue')
   },
@@ -120,6 +124,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/task06/01',
     component: () => import('@/views/SmallTask06/smalltask01View.vue')
+  },
+  {
+    path: '/task07/01',
+    component: () => import('@/views/SmallTask07/smalltask01View.vue')
   },
 
   {
