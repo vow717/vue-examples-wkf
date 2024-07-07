@@ -3,6 +3,12 @@ export interface Course {
   name?: string
   createTime?: string
 }
+export interface Teacher {
+  id: string
+  name: string
+  departmentId: string
+  age: string
+}
 export interface User {
   id?: number
   name?: string
