@@ -1,11 +1,11 @@
 import { type Order, type Shop } from './food/FoodInf'
 import { ref } from 'vue'
 
-const ShopsR = ref<Shop[]>([])
-const ShopR = ref<{ [key: string]: Shop }>({})
-const OrdersR = ref<Order[]>([])
+const ShopsS = ref<Shop[]>([])
+const ShopS = ref<{ [key: string]: Shop }>({})
+const OrdersS = ref<Order[]>([])
 
-const store = { ShopsR, ShopR, OrdersR }
+const store = { ShopsS, ShopS, OrdersS }
 
 export const useStore = () => {
   return store

@@ -9,7 +9,7 @@ const coursesS = ref<Course[]>([])
 
 const fetchCourses = async (): Promise<Course[]> => {
   if (coursesS.value.length === 0) {
-    coursesS.value = [...(await listCoursesMock())]
+    coursesS.value = await listCoursesMock()
   }
   return coursesS.value
 }

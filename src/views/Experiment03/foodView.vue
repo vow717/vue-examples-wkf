@@ -3,29 +3,29 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { Shop } from './food/FoodInf'
 import { fetchShopsService } from './Experiment03Service'
-import LoadingView from './E3Component/LoadingView.vue'
 
 // 定义响应式变量
-const shops = ref<Shop[]>([])
-const isLoading = ref(true)
+const shopsR = ref<Shop[]>([])
 
-// 定义异步加载函数
-const loadShops = async () => {
-  shops.value = await fetchShopsService()
-  isLoading.value = false
+/*阻塞方法（一开始什么都看不到，因为阻塞了，等await完就全能看到了)
+const loading=async()=>{
+  shopsR.value=await fetchShopsService()
 }
+await loading()
+*/
 
-// 调用加载函数
-loadShops()
+/*非阻塞方法（可以先看到"美食列表"，因为shopsR没东西，所以下面是空白的)
+fetchShopsService().then((s) => (shopsR.value = s))
+*/
+
+/*因为父组件home里有suspense包裹,子组件中的数据加载逻辑使用 async/await，使得在数据加载完成之前，不进行渲染。Suspense 会捕获这个状态*/
+shopsR.value = await fetchShopsService()
 </script>
 
 <template>
-  <p>美食列表:</p>
-  <div v-if="isLoading">
-    <LoadingView />
-  </div>
-  <div v-else>
-    <div v-for="(shop, index) in shops" :key="index">
+  <div>
+    <p>美食列表:</p>
+    <div v-for="(shop, index) in shopsR" :key="index" class="card">
       <router-link :to="`/experiment03/home/shop/${shop.id}`">
         <div class="card">
           <h2>{{ shop.name }}</h2>

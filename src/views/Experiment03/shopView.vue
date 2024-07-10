@@ -8,7 +8,6 @@ import {
   delOrderService,
   fetchOrdersService
 } from './Experiment03Service'
-import LoadingView from './E3Component/LoadingView.vue'
 
 // 接受/:id 的id
 const route = useRoute()
@@ -17,19 +16,11 @@ const id = route.params.id as string
 // 响应式数据
 const shopR = ref<Shop | null>(null)
 const ordersR = fetchOrdersService()
-const isLoadingR = ref(true)
-const loading = async () => {
-  shopR.value = await fetchShopService(id)
-  isLoadingR.value = false
-}
 
-loading()
+shopR.value = await fetchShopService(id)
 </script>
 
 <template>
-  <div v-if="isLoadingR">
-    <LoadingView />
-  </div>
   <div>
     <h3>{{ shopR?.name }}</h3>
     <div v-for="(eating, index) in shopR?.Eatings" :key="index" style="display: flex">
