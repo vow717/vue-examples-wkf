@@ -1,19 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useService } from './experiment03Service'
-import type { Order } from './food/foodInf'
+import { ref } from 'vue'
+import { fetchOrdersService } from './Experiment03Service'
+import type { Order } from './food/FoodInf'
 
-const { fetchOrdersService } = useService()
 const ordersR = ref<Order[]>([])
-const loading = async () => {
-  ordersR.value = await fetchOrdersService()
-}
-onMounted(loading)
+ordersR.value = fetchOrdersService()
 </script>
+
 <template>
   <div>
-    <ul>
-      <li v-for="(o, index) of ordersR" :key="index">{{ o.item.name }}:{{ o.quantity }}</li>
-    </ul>
+    <Suspense>
+      <ul>
+        <li v-for="(o, index) of ordersR" :key="index">{{ o.item.name }}:{{ o.quantity }}</li>
+      </ul>
+    </Suspense>
   </div>
 </template>

@@ -1,45 +1,39 @@
-import { useStore } from './experiment03Store'
-import type { Shop, Order, Eating } from './food/foodInf'
-import { fetchShopByShopIdMock, fetchShopsMock } from './experiment03Mock'
+import { useStore } from './Experiment03Store'
+import type { Shop, Eating } from './food/FoodInf'
+import { fetchShopByShopIdMock, fetchShopsMock } from './Experiment03Mock'
 
-const { ShopsR, ShopR, CostR, OrdersR } = useStore()
+const { ShopsR, ShopR, OrdersR } = useStore()
 
-const fetchShopService = async (ShopId: string): Promise<Shop> => {
-  ShopR.value = await fetchShopByShopIdMock(ShopId)
-  return ShopR.value
+export const fetchShopService = async (ShopId: string): Promise<Shop> => {
+  // 检查缓存对象是否已经包含指定的ShopId
+  if (!ShopR.value[ShopId]) {
+    const shop = await fetchShopByShopIdMock(ShopId)
+    ShopR.value[ShopId] = shop
+    console.log(`${shop.name}`)
+  }
+  return ShopR.value[ShopId]
 }
 
-const fetchShopsService = async (): Promise<Shop[]> => {
-  ShopsR.value = await fetchShopsMock()
+export const fetchShopsService = async (): Promise<Shop[]> => {
+  //缓存
+  if (ShopsR.value.length === 0) {
+    ShopsR.value = await fetchShopsMock()
+  }
   return ShopsR.value
 }
-const fetchCostService = async (): Promise<number> => {
-  // 初始化总花费
-  CostR.value = 0
 
-  // 检查 OrdersR.value 是否为空数组
-  if (OrdersR.value.length > 0) {
-    OrdersR.value.forEach((o) => {
-      CostR.value += o.quantity * (o.item.price ?? 0)
-    })
-    return CostR.value
-  } else {
-    return 0
-  }
-}
-const fetchOrdersService = async (): Promise<Order[]> => {
+export const fetchOrdersService = () => {
   return OrdersR.value
 }
-const addOrderService = async (eating: Eating) => {
+export const addOrderService = (eating: Eating) => {
   const existingOrder = OrdersR.value.find((o) => eating === o.item)
   if (existingOrder) {
     existingOrder.quantity += 1
   } else {
     OrdersR.value.push({ item: eating, quantity: 1 })
   }
-  await fetchCostService() // 更新总花费
 }
-const delOrderService = async (eating: Eating) => {
+export const delOrderService = (eating: Eating) => {
   const existingOrder = OrdersR.value.find((o) => eating === o.item)
   if (existingOrder) {
     existingOrder.quantity -= 1
@@ -47,22 +41,8 @@ const delOrderService = async (eating: Eating) => {
       OrdersR.value = OrdersR.value.filter((o) => o.item !== eating)
     }
   }
-  await fetchCostService() // 更新总花费
 }
-const getQuantityService = async (eating: Eating) => {
+export const getQuantityService = (eating: Eating) => {
   const existingOrder = OrdersR.value.find((o) => o.item === eating)
   return existingOrder ? existingOrder.quantity : 0
-}
-const store = {
-  fetchShopService,
-  fetchShopsService,
-  fetchCostService,
-  fetchOrdersService,
-  addOrderService,
-  delOrderService,
-  getQuantityService
-}
-
-export const useService = () => {
-  return store
 }

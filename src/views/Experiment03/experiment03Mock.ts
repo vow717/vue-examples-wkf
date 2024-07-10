@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import type { Shop } from './food/foodInf'
+import type { Shop } from './food/FoodInf'
 
 const shops: Shop[] = [
   {
@@ -95,6 +95,6 @@ export const fetchShopByShopIdMock = async (ShopId: string): Promise<Shop> => {
     setTimeout(() => {
       ShopR.value = shops.find((shop) => shop.id === ShopId) || {}
       resolve(ShopR.value)
-    }, 2000)
+    }, 1000)
   })
 }
