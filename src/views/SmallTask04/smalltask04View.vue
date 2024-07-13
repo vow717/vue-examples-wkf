@@ -3,8 +3,7 @@ import { usesmalltask01Store } from './smalltask01Store'
 import { ref } from 'vue'
 import type { Course } from '@/datasource/Types'
 
-const store = usesmalltask01Store()
-const addCourse = store.addCourse
+const { addCourse } = usesmalltask01Store()
 const courseName = ref('')
 
 const addCourseF = async () => {

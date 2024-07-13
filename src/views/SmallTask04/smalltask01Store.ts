@@ -7,17 +7,18 @@ import { listCoursesMock, addCourseMock } from './smalltask01Mock'
 
 const coursesS = ref<Course[]>([])
 
-const fetchCourses = async (): Promise<Course[]> => {
+const fetchCourses = async () => {
   if (coursesS.value.length === 0) {
     coursesS.value = await listCoursesMock()
   }
-  return coursesS.value
+  return coursesS
 }
 
-const addCourse = async (newCourse: Course): Promise<Course[]> => {
-  coursesS.value = await addCourseMock(newCourse)
+const addCourse = async (newCourse: Course) => {
+  coursesS.value.push(newCourse) // 确保数据添加到响应式 ref 中
+  await addCourseMock(newCourse)
   console.log('addCourse - 更新后的 coursesS:', coursesS.value)
-  return coursesS.value
+  return coursesS
 }
 
 const store = { coursesS, fetchCourses, addCourse }

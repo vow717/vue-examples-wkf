@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { fetchOrdersService } from './Experiment03Service'
-import type { Order } from './food/FoodInf'
 
-const ordersR = ref<Order[]>([])
-ordersR.value = fetchOrdersService()
+const ordersR = fetchOrdersService()
 </script>
 
 <template>

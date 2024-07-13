@@ -19,8 +19,8 @@ import LoadingView from './E3Component/LoadingView.vue'
       <template #default>
         <router-view />
       </template>
+      <!--不知道为什么没有loading画面-->
       <template #fallback>
-        <!--不知道为什么不会显示-->
         <LoadingView />
       </template>
     </Suspense>

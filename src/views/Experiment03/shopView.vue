@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import type { Shop } from './food/FoodInf'
+import { type Shop } from './food/FoodInf'
 import {
   fetchShopService,
   addOrderService,

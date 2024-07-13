@@ -3,9 +3,15 @@ import AddCourseComponent from './smalltask04View.vue'
 import CourseListComponent from './smalltask02View.vue'
 </script>
 <template>
-  <div>
-    <AddCourseComponent />
-    <hr />
-    <CourseListComponent />
-  </div>
+  <Suspense>
+    <template #default>
+      <AddCourseComponent />
+    </template>
+  </Suspense>
+  <hr />
+  <Suspense>
+    <template #default>
+      <CourseListComponent />
+    </template>
+  </Suspense>
 </template>

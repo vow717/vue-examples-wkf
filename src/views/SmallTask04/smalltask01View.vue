@@ -1,11 +1,20 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import AddCourseComponent from './smalltask04View.vue'
 import CourseListComponent from './smalltask02View.vue'
 </script>
+
 <template>
   <div>
-    <AddCourseComponent />
+    <Suspense>
+      <template #default>
+        <AddCourseComponent />
+      </template>
+    </Suspense>
     <hr />
-    <CourseListComponent />
+    <Suspense>
+      <template #default>
+        <CourseListComponent />
+      </template>
+    </Suspense>
   </div>
 </template>

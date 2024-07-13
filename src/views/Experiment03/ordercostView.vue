@@ -6,7 +6,7 @@ const OrdersS = fetchOrdersService()
 
 const costC = computed(() =>
   // reduce(callback, index)类似递归函数；callback函数，pre，前一次结果；cur，当前遍历对象
-  OrdersS.reduce((pre, cur) => pre + cur.quantity * (cur.item.price ?? 0), 0).toFixed(2)
+  OrdersS.value.reduce((pre, cur) => pre + cur.quantity * (cur.item.price ?? 0), 0).toFixed(2)
 )
 </script>
 
