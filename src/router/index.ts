@@ -66,6 +66,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Example08/example02View.vue')
   },
   {
+    path: '/example08/03',
+    component: () => import('@/views/Example08/example03View.vue')
+  },
+  {
     path: '/experiment02/01',
     component: () => import('@/views/Experiment02/experiment01View.vue')
   },
@@ -94,6 +98,10 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/Experiment03/NotFinished/RunningView.vue')
       }
     ]
+  },
+  {
+    path: '/experiment04/04',
+    component: () => import('@/views/Experiment04/Experiment04View.vue')
   },
   {
     path: '/homework01/01',

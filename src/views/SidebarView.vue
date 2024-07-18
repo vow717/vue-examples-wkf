@@ -87,11 +87,15 @@ import { RouterLink } from 'vue-router'
       <li>
         <router-link to="/example08/02">Mock</router-link>
       </li>
+      <li>
+        <router-link to="/example08/03">Mock2</router-link>
+      </li>
     </ul>
     <hr />
     <h1>实验</h1>
     <h3><router-link to="/experiment02/01">实验二</router-link></h3>
     <h3><router-link to="/experiment03/home">实验三</router-link></h3>
+    <h3><router-link to="/experiment04/04">实验四</router-link></h3>
     <hr />
     <h1>作业</h1>
     <h3><router-link to="/homework01/01">作业一</router-link></h3>

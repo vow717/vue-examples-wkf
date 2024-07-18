@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { GithubUser } from '@/datasource/Types'
 import { ref } from 'vue'
+
 import { useFetch } from '@vueuse/core'
 const userR = ref<GithubUser>({})
 /*
@@ -37,6 +38,5 @@ useFetch('https://api.github.com/users/vow717')
     <br />
     followers: {{ userR?.followers }}
     <br />
-    following:{{ userR?.following }}
   </div>
 </template>

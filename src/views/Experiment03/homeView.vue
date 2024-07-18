@@ -13,7 +13,6 @@ import LoadingView from './E3Component/LoadingView.vue'
     </div>
 
     <OrderCostView />
-
     <!-- 通过这种方式，内部的路由组件可以变成“阻塞”的组件，即在数据加载完成之前，不会进行渲染。这是因为 Suspense 会等待其包裹的内容中的异步操作完成。-->
     <Suspense>
       <template #default>

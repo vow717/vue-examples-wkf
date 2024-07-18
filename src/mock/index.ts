@@ -1,4 +1,4 @@
-import type { ResultVO, User } from '@/datasource/Types'
+import type { ResultVO, User, Course } from '@/datasource/Types'
 import { listCourses } from '@/datasource/Types'
 import { createServer, Response } from 'miragejs'
 import * as consty from '@/datasource/Const'
@@ -9,6 +9,62 @@ server.namespace = 'api'：设置服务器的命名空间为 'api'，即所有�
 const server = createServer({})
 server.namespace = 'api'
 
+//实验04的----------------------------------------------------------------------------------------
+server.post('experiment04/login', (_schema, request) => {
+  const { number, password } = JSON.parse(request.requestBody)
+  const resultVO: ResultVO<{}> = {
+    code: 200,
+    data: {}
+  }
+  if (number === '2022212927' && password == '2022212927') {
+    resultVO.data = { role: '0', user: { name: 'wkf', title: 'student', age: '20' } }
+    return new Response(
+      200,
+      {
+        token: '1a2s3d4f5g'
+      },
+      resultVO
+    )
+  }
+  if (number === 'admin' && password == 'admin') {
+    resultVO.data = { role: '1', user: { name: 'BO', title: 'teacher', age: '30' } }
+    return new Response(
+      200,
+      {
+        token: '1q2w3e4r5t'
+      },
+      resultVO
+    )
+  }
+  resultVO.code = 401
+  resultVO.message = '用户名密码错误'
+  return resultVO
+})
+
+server.get('experiment04/user/courses', (_schema, request) => {
+  const resultVO: ResultVO<{}> = {
+    code: 200,
+    data: {}
+  }
+  const token = request.requestHeaders.token
+  if (!token) {
+    resultVO.code = 401
+    console.log('未登录不可以查看课程')
+    resultVO.message = '请先登入'
+    return resultVO
+  }
+  if (token == '1a2s3d4f5g') {
+    resultVO.code = 403
+    console.log('无权限查看课程')
+    resultVO.message = '暂无权限查看'
+    return resultVO
+  }
+  console.log('有权限查看课程')
+  resultVO.data = { code: 200, courses: listCourses() }
+  return resultVO
+})
+
+//例子08的-----------------------------------------------------------------------------------------------
 //当访问 /api/users/:uid（例如 /api/users/123）时，返回一个包含用户信息的 ResultVO 对象。
 server.get('users/:uid', () => {
   const resultVO: ResultVO<{ user: User }> = {
@@ -17,6 +73,19 @@ server.get('users/:uid', () => {
   }
   return resultVO
 })
+
+server.get(
+  'users/:uid/courses',
+  () => {
+    const resultVO: ResultVO<{ courses: Course[] }> = {
+      code: 200,
+      data: { courses: listCourses() }
+    }
+
+    return resultVO
+  },
+  { timing: 2000 }
+)
 
 //接收 POST 请求 /api/login，根据提交的用户名和密码返回不同的登录结果，包括不同角色的 token 和用户信息。
 server.get('users/:uid', (_schema, request) => {
@@ -129,6 +198,3 @@ server.get(
   },
   { timing: 2000 }
 )
-
-//允许通过 MirageJS 直接转发所有对 https://api.github.com/users/** 的请求到实际的 GitHub API。
-server.passthrough('https://api.github.com/users/**')

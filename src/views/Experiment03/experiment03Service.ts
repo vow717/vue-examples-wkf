@@ -27,15 +27,17 @@ export const fetchShopsService = async () => {
 export const fetchOrdersService = () => {
   return OrdersS
 }
+
+//这种与某个组件相关，复用性不强的代码可以不放在service业务层来，直接在组件里自行完成，如果复用性可以提升的话，可以单开个OrderView.ts专门处理。
 export const addOrderService = (eating: Eating) => {
   const existingOrder = OrdersS.value.find((o) => eating.name === o.item.name)
   if (existingOrder) {
     existingOrder.quantity += 1
     console.log(`食品:${eating.name}数量+1`)
-  } else {
-    OrdersS.value.push({ item: eating, quantity: 1 })
-    console.log(`已添加新的食品:${eating.name}`)
+    return
   }
+  OrdersS.value.push({ item: eating, quantity: 1 })
+  console.log(`已添加新的食品:${eating.name}`)
 }
 export const delOrderService = (eating: Eating) => {
   const existingOrder = OrdersS.value.find((o) => eating.name === o.item.name)

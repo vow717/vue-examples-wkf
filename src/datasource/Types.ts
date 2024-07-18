@@ -38,7 +38,7 @@ export interface GithubUser {
 export interface ResultVO<T> {
   code: number
   message?: string
-  data: T
+  data: T //在 TypeScript 中，T 表示一个泛型类型。泛型类型使得你可以创建可重用的组件，这些组件不仅能够处理一种特定类型的数据，还能处理多种类型的数据。
 }
 export function listCourses() {
   const courses: Course[] = [
