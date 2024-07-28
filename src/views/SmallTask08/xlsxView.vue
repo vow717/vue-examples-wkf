@@ -19,27 +19,42 @@
 <script setup>
 import * as XLSX from 'xlsx'
 import { ref } from 'vue'
+
 const jsonData = ref([])
 
 const handleFileChange = async (event) => {
-  const file = event.target.files[0] // 获取用户选择的文件
-  const data = await readFileAsync(file) // 读取文件内容
-  const workbook = XLSX.read(data, { type: 'array' }) // 使用 xlsx 库以 array 解析数据
-
-  const firstSheetName = workbook.SheetNames[0] // 获取第一个工作表名称
-  const worksheet = workbook.Sheets[firstSheetName] // 获取第一个工作表内容
-
-  jsonData.value = XLSX.utils.sheet_to_json(worksheet) // 将工作表内容转换为 JSON 格式
-
-  console.log(jsonData.value) // 在控制台打印 JSON 数据
+  const file = event.target.files[0]
+  jsonData.value = await parseExcelFile(file)
 }
 
-// 异步读取文件内容
-const readFileAsync = (file) => {
-  return new Promise((resolve) => {
-    const reader = new FileReader() // 创建 FileReader 实例
-    reader.readAsArrayBuffer(file) // 读取文件内容为 ArrayBuffer
-    reader.onload = () => resolve(reader.result) // 成功读取时返回数据
+// 解析Excel文件并返回封装后的JSON数据
+const parseExcelFile = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsArrayBuffer(file)
+    reader.onload = () => {
+      const data = reader.result
+      const workbook = XLSX.read(data, { type: 'array' })
+      const firstSheetName = workbook.SheetNames[0]
+      const worksheet = workbook.Sheets[firstSheetName]
+      const rawJsonData = XLSX.utils.sheet_to_json(worksheet)
+
+      // 对数据进行封装处理
+      const formattedData = rawJsonData.map((row) => ({
+        // 创建一个新对象，并将原始对象中的中文字段映射为新的英文字段
+        id: row['#'] || '',
+        account: row['账号'] || '',
+        name: row['姓名'] || '',
+        quantity: row['数量'] || '',
+        group: row['组'] || '',
+        groupA: row['A组'] || '',
+        groupB: row['B组'] || '',
+        groupC: row['C组'] || ''
+      }))
+
+      resolve(formattedData)
+    }
+    reader.onerror = (error) => reject(error)
   })
 }
 </script>
