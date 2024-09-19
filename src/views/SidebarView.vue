@@ -79,7 +79,7 @@ import { RouterLink } from 'vue-router'
         <router-link to="/example07/01">Del</router-link>
       </li>
     </ul>
-    <h2>Newworks</h2>
+    <h2>Networks</h2>
     <ul>
       <li>
         <router-link to="/example08/01">UseFetch</router-link>

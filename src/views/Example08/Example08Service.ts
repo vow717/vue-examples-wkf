@@ -15,7 +15,7 @@ export async function usePost<T>(url: string, data: unknown) {
 }
 
 export const listCoursesService = async (userId: number) => {
-  const { data } = await useGet<{ courses: Course[] }>(`api/users/${userId}/courses`)
+  const { data } = await useGet<{ courses: Course[] }>(`users/${userId}/courses`)
   return data.value?.data.courses ?? []
 }
 

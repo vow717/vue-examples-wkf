@@ -23,6 +23,7 @@
       <p>
         未登录发出的请求会返回401未登录业务码；token错误返回403无权限业务码，被请求拦截器拦截后激活自定义模态框，弹出错误信息。
       </p>
+      <p>你好,{{ userR.name }}先生</p>
       <button type="button" @click="getHome">home</button>
       <br />
       <button @click="clearSessionStorageF">清空SessionStorage用于测试</button>
@@ -67,6 +68,7 @@ const loginF = async () => {
 
 const clearSessionStorageF = () => {
   sessionStorage.clear()
+  userR.value = {}
   coursesR.value.length = 0
 }
 </script>

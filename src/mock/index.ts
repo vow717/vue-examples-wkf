@@ -87,7 +87,6 @@ server.get(
   { timing: 2000 }
 )
 
-//接收 POST 请求 /api/login，根据提交的用户名和密码返回不同的登录结果，包括不同角色的 token 和用户信息。
 server.get('users/:uid', (_schema, request) => {
   console.log(request.params.uid)
   const resultVO: ResultVO<{ user: User }> = {

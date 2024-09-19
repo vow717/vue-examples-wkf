@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { listCourses } from '@/datasource/Types'
-import type { Course } from '@/type'
+import type { Course } from '@/datasource/Types'
 import { ref } from 'vue'
 import { createDelDialog } from './index'
 const coursesR = ref<Course[]>(listCourses())

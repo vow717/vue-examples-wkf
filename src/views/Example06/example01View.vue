@@ -59,7 +59,13 @@ const changeItemF = () => {
       <br />
       <h3>父组件执行子组件函数</h3>
       <br />
-      defineExpose()，声明组件对外暴露的属性。即，声明在子组件，由父组件执行操作子组件
+      defineExpose()，声明组件对外暴露的属性。即，声明在子组件，由父组件执行操作子组件。defineExpose在子组件声明，父组件用ref接收
+      例如：
+      子组件:
+      defineExpose({userR,stopLoop})
+      父组件:
+      const exposeR=ref<{userR?:{name:''};stopLoop?:()=>void}>({})
+      <editbutton2 ref="exposeR" />
       <br />
       基于全局数据状态
     </p>

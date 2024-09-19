@@ -19,6 +19,11 @@ choseUserF
   <div>
     <h2>Mock</h2>
     {{ userR?.id }}/{{ userR?.name }}
+    <!--
+     @click.prevent：阻止事件的默认行为。它会阻止触发dom的原始事件，而只执行我们自定义的事件。
+     例如：在代码里写入一个<a>标签，在点击<a>标签时，会默认触发一次跳转，跳转到目标URL：
+     但如果我们不想让它跳转，而是在点击<a>标签时执行我们的自定义方法，那就需要用到@click.prevent
+   -->
     <a href="" @click.prevent="choseUserF(userR.id!)">
       {{ userR.name }}
     </a>
