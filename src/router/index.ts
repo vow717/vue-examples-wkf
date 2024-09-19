@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
-
+import * as consty from '@/datasource/Const'
+import { createAlertDialog } from '@/components/message'
 const routes: RouteRecordRaw[] = [
   {
     path: '/example01/01',
@@ -68,6 +69,39 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/example08/03',
     component: () => import('@/views/Example08/example03View.vue')
+  },
+  {
+    path: '/example09',
+    component: () => import('@/views/Example09/example09View.vue'),
+    children: [
+      {
+        props: true,
+        name: 'login-g',
+        path: 'login',
+        component: () => import('@/views/Example09/GuardLogin.vue')
+      },
+      {
+        props: true,
+        path: 'user',
+        component: () => import('@/views/Example09/GuardUser.vue'),
+        meta: {
+          role: consty.USER
+        }
+      },
+      {
+        props: true,
+        path: 'admin',
+        component: () => import('@/views/Example09/GuardAdmin.vue'),
+        meta: {
+          role: consty.ADMIN
+        }
+      },
+      {
+        name: 'nomatch',
+        path: ':pathMatch(.*)*', // 如果是全局匹配，应加上`/`，/:pathMatch(.*)*
+        redirect: { name: 'login-g' }
+      }
+    ]
   },
   {
     path: '/experiment02/01',
@@ -155,8 +189,27 @@ const routes: RouteRecordRaw[] = [
 ]
 
 const router = createRouter({
+  // HTML5 Mode。createWebHistory()函数，生产环境下需要web容器完成转发
+  // createWebHashHistory()函数仍使用#符号，无需配置
+  // history: createWebHistory(import.meta.env.BASE_URL),
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach((to, from) => {
+  // 排除，没有声明角色权限的路由
+  if (!to.meta.role) {
+    return true
+  }
+
+  if (to.meta.role != sessionStorage.getItem('role')) {
+    createAlertDialog('无权限')
+    // 直接返回路由地址
+    // return '/example13/login'
+    // 支持返回路由对象
+    return { name: 'login-g' }
+  }
+  return true
 })
 
 export default router

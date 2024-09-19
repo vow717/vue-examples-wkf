@@ -90,6 +90,9 @@ import { RouterLink } from 'vue-router'
       <li>
         <router-link to="/example08/03">Mock2</router-link>
       </li>
+      <li>
+        <router-link to="/example09/login">Navigation Guards</router-link>
+      </li>
     </ul>
     <hr />
     <h1>实验</h1>
