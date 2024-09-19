@@ -199,7 +199,7 @@ const router = createRouter({
 router.beforeEach((to, from) => {
   // 排除，没有声明角色权限的路由
   if (!to.meta.role) {
-    return true
+    return true //返回ture则允许路由
   }
 
   if (to.meta.role != sessionStorage.getItem('role')) {
