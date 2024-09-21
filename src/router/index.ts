@@ -3,6 +3,34 @@ import * as consty from '@/datasource/Const'
 import { createAlertDialog } from '@/components/message'
 const routes: RouteRecordRaw[] = [
   {
+    path: '/ElementPlus/BasicComponents/ButtonView',
+    component: () => import('@/views/ElementPlus/BasicComponents/ButtonView.vue')
+  },
+  {
+    path: '/ElementPlus/BasicComponents/BorderAndColorView',
+    component: () => import('@/views/ElementPlus/BasicComponents/BorderAndColorView.vue')
+  },
+  {
+    path: '/ElementPlus/BasicComponents/ContainerView',
+    component: () => import('@/views/ElementPlus/BasicComponents/ContainerView.vue')
+  },
+  {
+    path: '/ElementPlus/BasicComponents/IconView',
+    component: () => import('@/views/ElementPlus/BasicComponents/IconView.vue')
+  },
+  {
+    path: '/ElementPlus/BasicComponents/OtherView',
+    component: () => import('@/views/ElementPlus/BasicComponents/OtherView.vue')
+  },
+  {
+    path: '/ElementPlus/ConfigProviderView',
+    component: () => import('@/views/ElementPlus/ConfigProviderView.vue')
+  },
+  {
+    path: '/ElementPlus/FormComponents/AutocompleteView',
+    component: () => import('@/views/ElementPlus/FormComponents/AutocompleteView.vue')
+  },
+  {
     path: '/example01/01',
     component: () => import('@/views/Example01/example01View.vue')
   },
