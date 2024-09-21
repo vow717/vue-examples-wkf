@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router'
   <div data-div-border>
     <h1>Element-Plus</h1>
     <h2><router-link to="">Home</router-link></h2>
-    <h2>BasicComponents</h2>
+    <h2>基础组件</h2>
     <ul>
       <li>
         <router-link to="/ElementPlus/BasicComponents/ButtonView">Button按钮</router-link>
@@ -31,6 +31,18 @@ import { RouterLink } from 'vue-router'
     <ul>
       <li>
         <router-link to="/ElementPlus/FormComponents/AutocompleteView">自动补全输入框</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/FormView">Form表单</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/OtherView">其他组件</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/RateView">Rate评分</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/SliderView">Slider滑块</router-link>
       </li>
     </ul>
   </div>

@@ -31,6 +31,22 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/ElementPlus/FormComponents/AutocompleteView.vue')
   },
   {
+    path: '/ElementPlus/FormComponents/OtherView',
+    component: () => import('@/views/ElementPlus/FormComponents/OtherView.vue')
+  },
+  {
+    path: '/ElementPlus/FormComponents/FormView',
+    component: () => import('@/views/ElementPlus/FormComponents/FormView.vue')
+  },
+  {
+    path: '/ElementPlus/FormComponents/RateView',
+    component: () => import('@/views/ElementPlus/FormComponents/RateView.vue')
+  },
+  {
+    path: '/ElementPlus/FormComponents/SliderView',
+    component: () => import('@/views/ElementPlus/FormComponents/SliderView.vue')
+  },
+  {
     path: '/example01/01',
     component: () => import('@/views/Example01/example01View.vue')
   },
