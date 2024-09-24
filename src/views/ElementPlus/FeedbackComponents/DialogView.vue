@@ -46,6 +46,6 @@ const handleClose = (done: () => void) => {
       呼出一个临时的侧边栏。el-drawer同样v-model绑定隐藏和显示状态。有四个方向direction, ltr rtl ttb
       btt,表示left to right，right to left，top to bottom，bottom to top
     </p>
-    <el-table v-loading="true" :data="[{ data: '1', name: '1', adress: '1' }]" />
+    
   </div>
 </template>

@@ -34,5 +34,7 @@ const open = ref(false)
       <el-tour-step :target="ref2?.$el" title="Save" description="Save your changes" />
       <el-tour-step :target="ref3?.$el" title="Other Actions" description="Click to see other" />
     </el-tour>
+
+    <p>:mask="false"可以改变成非模态框方式</p>
   </div>
 </template>
