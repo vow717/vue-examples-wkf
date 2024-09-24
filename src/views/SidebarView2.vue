@@ -44,6 +44,54 @@ import { RouterLink } from 'vue-router'
       <li>
         <router-link to="/ElementPlus/FormComponents/SliderView">Slider滑块</router-link>
       </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/TransferView">Transfer穿梭框</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FormComponents/UploadView">Upload上传</router-link>
+      </li>
+    </ul>
+    <h2>Data数据展示</h2>
+    <ul>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/AvatarAndBadgeView">
+          Avatar头像和Badge徽章
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/CardAndCarouselView">
+          Card卡片和Carousel走马灯
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/CollapseView">Collapse折叠面板</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/ProgressView">Progress进度条</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/OtherView">其他组件</router-link>
+      </li>
+      <li>table表格，简单却又繁琐多样，建议看网站</li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/TourView">Tour漫游式引导</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/DataComponents/StatisticView">Statistic统计组件</router-link>
+      </li>
+    </ul>
+    <h2>Feedback反馈组件</h2>
+    <ul>
+      <li><router-link to="/ElementPlus/FeedbackComponents/AlertView">Alert提示</router-link></li>
+      <li>
+        <router-link to="/ElementPlus/FeedbackComponents/DialogView">Dialog对话框</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FeedbackComponents/TooltipView">Tooltip文字提示</router-link>
+      </li>
+      <li>
+        <router-link to="/ElementPlus/FeedbackComponents/OtherView">其他组件</router-link>
+      </li>
     </ul>
   </div>
 </template>

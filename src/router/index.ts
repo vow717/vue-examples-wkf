@@ -47,6 +47,58 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/ElementPlus/FormComponents/SliderView.vue')
   },
   {
+    path: '/ElementPlus/FormComponents/TransferView',
+    component: () => import('@/views/ElementPlus/FormComponents/TransferView.vue')
+  },
+  {
+    path: '/ElementPlus/FormComponents/UploadView',
+    component: () => import('@/views/ElementPlus/FormComponents/UploadView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/AvatarAndBadgeView',
+    component: () => import('@/views/ElementPlus/DataComponents/AvatarAndBadgeView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/CardAndCarouselView',
+    component: () => import('@/views/ElementPlus/DataComponents/CardAndCarouselView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/CollapseView',
+    component: () => import('@/views/ElementPlus/DataComponents/CollapseView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/OtherView',
+    component: () => import('@/views/ElementPlus/DataComponents/OtherView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/ProgressView',
+    component: () => import('@/views/ElementPlus/DataComponents/ProgressView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/TourView',
+    component: () => import('@/views/ElementPlus/DataComponents/TourView.vue')
+  },
+  {
+    path: '/ElementPlus/DataComponents/StatisticView',
+    component: () => import('@/views/ElementPlus/DataComponents/StatisticView.vue')
+  },
+  {
+    path: '/ElementPlus/FeedbackComponents/AlertView',
+    component: () => import('@/views/ElementPlus/FeedbackComponents/AlertView.vue')
+  },
+  {
+    path: '/ElementPlus/FeedbackComponents/DialogView',
+    component: () => import('@/views/ElementPlus/FeedbackComponents/DialogView.vue')
+  },
+  {
+    path: '/ElementPlus/FeedbackComponents/OtherView',
+    component: () => import('@/views/ElementPlus/FeedbackComponents/OtherView.vue')
+  },
+  {
+    path: '/ElementPlus/FeedbackComponents/TooltipView',
+    component: () => import('@/views/ElementPlus/FeedbackComponents/TooltipView.vue')
+  },
+  {
     path: '/example01/01',
     component: () => import('@/views/Example01/example01View.vue')
   },
