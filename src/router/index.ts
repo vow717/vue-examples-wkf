@@ -1,4 +1,9 @@
-import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+  type RouteRecordRaw
+} from 'vue-router'
 import * as consty from '@/datasource/Const'
 import { createAlertDialog } from '@/components/message'
 const routes: RouteRecordRaw[] = [
@@ -97,6 +102,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/ElementPlus/FeedbackComponents/TooltipView',
     component: () => import('@/views/ElementPlus/FeedbackComponents/TooltipView.vue')
+  },
+  {
+    path: '/ElementPlus/Tasks/LoginView',
+    component: () => import('@/views/ElementPlus/Tasks/LoginView.vue')
   },
   {
     path: '/example01/01',
@@ -276,6 +285,26 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/task08/01',
     component: () => import('@/views/SmallTask08/xlsxView.vue')
+  },
+  {
+    path: '/task08/02',
+    component: () => import('@/views/SmallTask08/ExportExcelView.vue')
+  },
+  {
+    path: '/task09/01',
+    component: () => import('@/views/SmallTask09/DayOff.vue')
+  },
+  {
+    path: '/task09/02',
+    component: () => import('@/views/SmallTask09/DayOff2.vue')
+  },
+  {
+    path: '/task10/01',
+    component: () => import('@/views/SmallTest10/VirtualList.vue')
+  },
+  {
+    path: '/task10/02',
+    component: () => import('@/views/SmallTest10/VirtualList2.vue')
   },
 
   {

@@ -1,5 +1,20 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+const activities = [
+  {
+    content: '登入页面',
+    timestamp: '2024-09-25',
+    path: '/ElementPlus/Tasks/LoginView'
+  },
+  {
+    content: 'Nope',
+    timestamp: '2024-xx-xx'
+  },
+  {
+    content: 'Nope',
+    timestamp: '2024-xx-xx'
+  }
+]
 </script>
 
 <template>
@@ -93,6 +108,15 @@ import { RouterLink } from 'vue-router'
         <router-link to="/ElementPlus/FeedbackComponents/OtherView">其他组件</router-link>
       </li>
     </ul>
+    <h2>小任务</h2>
+    <el-timeline style="max-width: 600px">
+      <el-timeline-item
+        v-for="(activity, index) in activities"
+        :key="index"
+        :timestamp="activity.timestamp">
+        <router-link v-if="activity.path" :to="activity.path">{{ activity.content }}</router-link>
+      </el-timeline-item>
+    </el-timeline>
   </div>
 </template>
 

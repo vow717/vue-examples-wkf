@@ -112,7 +112,12 @@ import { RouterLink } from 'vue-router'
     <h3><router-link to="/task05/01">练习5</router-link></h3>
     <h3><router-link to="/task06/01">练习6</router-link></h3>
     <h3><router-link to="/task07/01">练习7</router-link></h3>
-    <h3><router-link to="/task08/01">练习8</router-link></h3>
+    <h3><router-link to="/task08/01">练习8:接收excel</router-link></h3>
+    <h3><router-link to="/task08/02">练习8(2):导出Excel</router-link></h3>
+    <h3><router-link to="/task09/01">练习9</router-link></h3>
+    <h3><router-link to="/task09/02">练习9(2)</router-link></h3>
+    <h3><router-link to="/task10/01">练习10:虚拟列表</router-link></h3>
+    <h3><router-link to="/task10/02">练习10(2):虚拟列表2</router-link></h3>
   </div>
 </template>
 
