@@ -118,6 +118,8 @@ import { RouterLink } from 'vue-router'
     <h3><router-link to="/task09/02">练习9(2)</router-link></h3>
     <h3><router-link to="/task10/01">练习10:虚拟列表</router-link></h3>
     <h3><router-link to="/task10/02">练习10(2):虚拟列表2</router-link></h3>
+    <h3><router-link to="/task11/01">练习11:图片预览和裁剪</router-link></h3>
+    <h3><router-link to="/task12/01">练习12:todolist实现</router-link></h3>
   </div>
 </template>
 

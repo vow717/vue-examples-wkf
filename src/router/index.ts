@@ -306,6 +306,10 @@ const routes: RouteRecordRaw[] = [
     path: '/task10/02',
     component: () => import('@/views/SmallTest10/VirtualList2.vue')
   },
+  {
+    path: '/task11/01',
+    component: () => import('@/views/SmallTest11/ImgPreLook.vue')
+  },
 
   {
     path: '/',
